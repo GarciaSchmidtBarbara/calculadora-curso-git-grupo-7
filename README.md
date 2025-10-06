@@ -1,6 +1,9 @@
 # calculadora-curso-git
 Una calculadora simple de consola desarrollada en JavaScript con cliente interactivo de uso para los trabajos prácticos del Curso de git.
 
+## Integrantes:
+Garcia Schmidt Barbara
+
 ## 📋 Características
 
 - ✅ Operaciones matemáticas básicas

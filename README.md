@@ -3,6 +3,7 @@ Una calculadora simple de consola desarrollada en JavaScript con cliente interac
 
 ## Integrantes:
 Garcia Schmidt Barbara
+Kevin Nuñez
 
 ## 📋 Características
 

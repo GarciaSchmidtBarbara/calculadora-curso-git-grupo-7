@@ -4,7 +4,7 @@ class Calculadora {
   }
 
   restar(a, b) {
-    // TODO: Implementar resta
+    return a-b;
   }
 
   multiplicar(a, b) {
@@ -12,7 +12,7 @@ class Calculadora {
   }
 
   dividir(a, b) {
-    // TODO: Implementar división
+    Math.floor(a/ b)
   }
 
   potencia(base, exponente) {

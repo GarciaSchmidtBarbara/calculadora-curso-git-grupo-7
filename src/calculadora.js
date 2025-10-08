@@ -8,7 +8,7 @@ class Calculadora {
   }
 
   multiplicar(a, b) {
-    // TODO: Implementar multiplicación
+    return a * b;
   }
 
   dividir(a, b) {

@@ -4,7 +4,7 @@ class Calculadora {
   }
 
   restar(a, b) {
-    return a-b;
+    return a - b;
   }
 
   multiplicar(a, b) {
@@ -12,11 +12,14 @@ class Calculadora {
   }
 
   dividir(a, b) {
-    Math.floor(a/ b)
+    if (b === 0) {
+      throw new Error("No se puede dividir por cero");
+    }
+    return Math.floor(a / b);
   }
 
   potencia(base, exponente) {
-    return base**exponente; 
+    return base ** exponente;
   }
 
   raizCuadrada(numero) {

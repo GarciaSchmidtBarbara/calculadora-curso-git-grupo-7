@@ -25,7 +25,11 @@ function mostrarMenu() {
   console.log('10. Resto de la división');
 =======
   console.log('7. Porcentaje (a sobre b)');
+<<<<<<< HEAD
 >>>>>>> 580066d (Agregada funcion porcentaje y modificado cliente.js para que funcione)
+=======
+  console.log(`[M] Memoria actual: ${calc.obtenerMemoria()}`);
+>>>>>>> b55b643 (Funcion memoria añadida)
   console.log('0. Salir');
   console.log('=================================');
 }
@@ -43,6 +47,7 @@ function pedirNumero(mensaje) {
             resolve(numero);
         });
     });
+<<<<<<< HEAD
 }
 
 async function cargarNumeros() {
@@ -59,6 +64,8 @@ async function cargarNumeros() {
   }
 
   return numeros;
+=======
+>>>>>>> b55b643 (Funcion memoria añadida)
 }
 
 async function operacionDosNumeros(operacion, nombreOperacion) {

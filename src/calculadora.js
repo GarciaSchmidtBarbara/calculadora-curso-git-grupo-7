@@ -2,6 +2,9 @@ class Calculadora {
 
   constructor() {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b55b643 (Funcion memoria añadida)
       this.memoria = 0; 
   }
 
@@ -13,9 +16,12 @@ class Calculadora {
 
   obtenerMemoria() {
     return this.memoria;
+<<<<<<< HEAD
 =======
     this.memoria = 0; 
 >>>>>>> 580066d (Agregada funcion porcentaje y modificado cliente.js para que funcione)
+=======
+>>>>>>> b55b643 (Funcion memoria añadida)
   }
 
   sumar(a, b) {

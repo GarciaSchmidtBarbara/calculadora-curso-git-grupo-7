@@ -34,7 +34,14 @@ class Calculadora {
     result *= numero;
   }
   return result;
-}
+  }
+
+  calcularMaximo(numeros) {
+    if (!Array.isArray(numeros) || numeros.length === 0) {
+      throw new Error("Debe proporcionar un array no vacío de números");
+    }
+    return Math.max(...numeros);
+  }
 }
 
 

@@ -18,6 +18,7 @@ function mostrarMenu() {
   console.log('4. Dividir');
   console.log('5. Potencia');
   console.log('6. Raíz Cuadrada');
+  console.log('7. Porcentaje (a sobre b)');
   console.log('0. Salir');
   console.log('=================================');
 }
@@ -64,7 +65,8 @@ function getSimboloOperacion(nombre) {
     'resta': '-',
     'multiplicación': '×',
     'división': '÷',
-    'potencia': '^'
+    'potencia': '^',
+    'porcentaje': '%'
   };
   return simbolos[nombre] || '';
 }
@@ -120,6 +122,17 @@ async function ejecutarOpcion(opcion) {
         (num) => calc.raizCuadrada(num),
         'raíz cuadrada'
       );
+      break;
+
+      case '7':
+      try {
+        await operacionDosNumeros(
+          (a, b) => calc.porcentaje(a, b),
+          'porcentaje'
+        );
+      } catch (error) {
+        console.log(`\n⚠️  Error: ${error.message}`);
+      }
       break;
 
     case '0':

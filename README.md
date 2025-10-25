@@ -53,6 +53,7 @@ Verás un menú como este:
 4. Dividir
 5. Potencia
 6. Raíz Cuadrada
+7. Factorial
 0. Salir
 =================================
 ```
@@ -80,3 +81,4 @@ calculadora-curso-git/
 | `dividir(a, b)`       | ✅ Implementada | Divide dos números             |
 | `potencia(base, exp)` | ✅ Implementada | Eleva un número a una potencia |
 | `raizCuadrada(num)`   | ✅ Implementada | Calcula la raíz cuadrada       |
+| `factorial(num)`      | ✅ Implementada | Calcula el factorial de un número|      |

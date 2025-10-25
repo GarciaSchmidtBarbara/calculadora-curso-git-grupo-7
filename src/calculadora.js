@@ -25,7 +25,18 @@ class Calculadora {
   raizCuadrada(numero) {
     return Math.sqrt(numero);
   }
+  factorial(numero) {
+  var result = numero;
+  if (numero === 0 || numero === 1) 
+    return 1; 
+  while (numero > 1) { 
+    numero--;
+    result *= numero;
+  }
+  return result;
 }
+}
+
 
 // Exportar para usar en tests
 if (typeof module !== 'undefined' && module.exports) {

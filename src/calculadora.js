@@ -1,6 +1,7 @@
 class Calculadora {
 
   constructor() {
+<<<<<<< HEAD
       this.memoria = 0; 
   }
 
@@ -12,6 +13,9 @@ class Calculadora {
 
   obtenerMemoria() {
     return this.memoria;
+=======
+    this.memoria = 0; 
+>>>>>>> 580066d (Agregada funcion porcentaje y modificado cliente.js para que funcione)
   }
 
   sumar(a, b) {
@@ -40,6 +44,7 @@ class Calculadora {
   raizCuadrada(numero) {
     return Math.sqrt(numero);
   }
+<<<<<<< HEAD
   factorial(numero) {
     var result = numero;
     if (numero === 0 || numero === 1)
@@ -67,6 +72,16 @@ class Calculadora {
   resto(dividendo, divisor) {
     return dividendo - this.multiplicar(Math.floor(dividendo / divisor), divisor);
   }
+=======
+
+  porcentaje(a, b) {
+    if (b === 0) {
+      throw new Error("No se puede calcular el porcentaje si el total (b) es cero");
+    }
+    return (a / b) * 100;
+  }
+
+>>>>>>> 580066d (Agregada funcion porcentaje y modificado cliente.js para que funcione)
 }
 
 

@@ -18,10 +18,14 @@ function mostrarMenu() {
   console.log('4. Dividir');
   console.log('5. Potencia');
   console.log('6. Raíz Cuadrada');
+<<<<<<< HEAD
   console.log('7. Factorial');
   console.log('8. Calcular Máximo');
   console.log('9. Calcular Logaritmo');
   console.log('10. Resto de la división');
+=======
+  console.log('7. Porcentaje (a sobre b)');
+>>>>>>> 580066d (Agregada funcion porcentaje y modificado cliente.js para que funcione)
   console.log('0. Salir');
   console.log('=================================');
 }
@@ -99,8 +103,12 @@ function getSimboloOperacion(nombre) {
     'multiplicación': '×',
     'división': '÷',
     'potencia': '^',
+<<<<<<< HEAD
     'logaritmo': 'log',
     'resto': '%'
+=======
+    'porcentaje': '%'
+>>>>>>> 580066d (Agregada funcion porcentaje y modificado cliente.js para que funcione)
   };
   return simbolos[nombre] || '';
 }
@@ -192,6 +200,17 @@ async function ejecutarOpcion(opcion) {
       const divisor = await pedirNumero('Ingrese el divisor: ');
       const resultadoResto = calc.resto(dividendo, divisor);
       console.log(`\n✓ Resultado: El resto de ${dividendo} dividido por ${divisor} es ${resultadoResto}`);
+      break;
+
+      case '7':
+      try {
+        await operacionDosNumeros(
+          (a, b) => calc.porcentaje(a, b),
+          'porcentaje'
+        );
+      } catch (error) {
+        console.log(`\n⚠️  Error: ${error.message}`);
+      }
       break;
 
       case '7':

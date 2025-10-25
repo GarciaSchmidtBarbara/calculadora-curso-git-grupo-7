@@ -20,6 +20,7 @@ function mostrarMenu() {
   console.log('6. Raíz Cuadrada');
   console.log('7. Factorial');
   console.log('8. Calcular Máximo');
+  console.log('9. Calcular Logaritmo');
   console.log('0. Salir');
   console.log('=================================');
 }
@@ -82,7 +83,8 @@ function getSimboloOperacion(nombre) {
     'resta': '-',
     'multiplicación': '×',
     'división': '÷',
-    'potencia': '^'
+    'potencia': '^',
+    'logaritmo': 'log'
   };
   return simbolos[nombre] || '';
 }
@@ -147,14 +149,26 @@ async function ejecutarOpcion(opcion) {
       break;
 
     case '8':
-        const numeros = await cargarNumeros();
-        if (numeros.length === 0) {
-          console.log('\n  Debe ingresar al menos un número');
-          break;
-        }
-        const maximo = calc.calcularMaximo(numeros);
-        console.log(`\n✓ El máximo de los números ${numeros.join(', ')} es: ${maximo}`);
-       
+      const numeros = await cargarNumeros();
+      if (numeros.length === 0) {
+        console.log('\n  Debe ingresar al menos un número');
+        break;
+      }
+      const maximo = calc.calcularMaximo(numeros);
+      console.log(`\n✓ El máximo de los números ${numeros.join(', ')} es: ${maximo}`);
+
+      break;
+
+    case '9':
+      const numeroLog = await pedirNumero('Ingrese el número: ');
+      const baseLog = 10; // Logaritmo en base 10
+      const resultadoLog = calc.calcularLogaritmo(numeroLog, baseLog);
+
+      if (resultadoLog === undefined) {
+        console.log('\n⚠️  La función logaritmo aún no está implementada');
+      } else {
+        console.log(`\n✓ Resultado: log_${baseLog}(${numeroLog}) = ${resultadoLog}`);
+      }
       break;
 
     case '0':

@@ -54,6 +54,7 @@ Verás un menú como este:
 5. Potencia
 6. Raíz Cuadrada
 7. Factorial
+8. Calcular Máximo
 0. Salir
 =================================
 ```
@@ -81,4 +82,5 @@ calculadora-curso-git/
 | `dividir(a, b)`       | ✅ Implementada | Divide dos números             |
 | `potencia(base, exp)` | ✅ Implementada | Eleva un número a una potencia |
 | `raizCuadrada(num)`   | ✅ Implementada | Calcula la raíz cuadrada       |
-| `factorial(num)`      | ✅ Implementada | Calcula el factorial de un número|      |
+| `factorial(num)`      | ✅ Implementada | Calcula el factorial de un número|
+| `calcularMaximo(numeros)` | ✅ Implementada | Calcula el máximo de un conjunto de números |

@@ -19,6 +19,7 @@ function mostrarMenu() {
   console.log('5. Potencia');
   console.log('6. Raíz Cuadrada');
   console.log('7. Factorial');
+  console.log('8. Calcular Máximo');
   console.log('0. Salir');
   console.log('=================================');
 }
@@ -30,6 +31,22 @@ function pedirNumero(mensaje) {
       resolve(numero);
     });
   });
+}
+
+async function cargarNumeros() {
+  const numeros = [];
+  let continuar = true;
+
+  while (continuar) {
+    const num = await pedirNumero('Ingrese un número (o ingrese -1 para terminar): ');
+    if (num === -1) {
+      continuar = false;
+    } else {
+      numeros.push(num);
+    }
+  }
+
+  return numeros;
 }
 
 async function operacionDosNumeros(operacion, nombreOperacion) {
@@ -129,13 +146,24 @@ async function ejecutarOpcion(opcion) {
       );
       break;
 
+    case '8':
+        const numeros = await cargarNumeros();
+        if (numeros.length === 0) {
+          console.log('\n  Debe ingresar al menos un número');
+          break;
+        }
+        const maximo = calc.calcularMaximo(numeros);
+        console.log(`\n✓ El máximo de los números ${numeros.join(', ')} es: ${maximo}`);
+       
+      break;
+
     case '0':
       console.log('\n¡Hasta luego! 👋');
       rl.close();
       return false;
 
     default:
-      console.log('\n⚠️  Opción inválida. Por favor intente nuevamente.');
+      console.log('\n  Opción inválida. Por favor intente nuevamente.');
   }
 
   return true;

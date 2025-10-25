@@ -49,6 +49,9 @@ class Calculadora {
     }
     return Math.log(numero) / Math.log(base);
   }
+  resto(dividendo, divisor) {
+    return dividendo - this.multiplicar(Math.floor(dividendo / divisor), divisor);
+  }
 }
 
 

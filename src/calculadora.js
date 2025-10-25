@@ -1,7 +1,17 @@
 class Calculadora {
 
   constructor() {
-    this.memoria = 0; 
+      this.memoria = 0; 
+  }
+
+  guardarEnMemoria(resultado) {
+    if (!isNaN(resultado) && isFinite(resultado)) {
+        this.memoria = resultado;
+    }
+  }
+
+  obtenerMemoria() {
+    return this.memoria;
   }
 
   sumar(a, b) {

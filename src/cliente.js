@@ -19,44 +19,59 @@ function mostrarMenu() {
   console.log('5. Potencia');
   console.log('6. Raíz Cuadrada');
   console.log('7. Porcentaje (a sobre b)');
+  console.log(`[M] Memoria actual: ${calc.obtenerMemoria()}`);
   console.log('0. Salir');
   console.log('=================================');
 }
 
 function pedirNumero(mensaje) {
-  return new Promise((resolve) => {
-    rl.question(mensaje, (respuesta) => {
-      const numero = parseFloat(respuesta);
-      resolve(numero);
+    return new Promise((resolve) => {
+        rl.question(`${mensaje} (o 'm' para Memoria): `, (respuesta) => { 
+            if (respuesta.toLowerCase() === 'm') {
+                const valorMemoria = calc.obtenerMemoria();
+                console.log(`(Usando Memoria: ${valorMemoria})`);
+                resolve(valorMemoria);
+                return;
+            }
+            const numero = parseFloat(respuesta);
+            resolve(numero);
+        });
     });
-  });
 }
 
 async function operacionDosNumeros(operacion, nombreOperacion) {
-  const num1 = await pedirNumero('Ingrese el primer número: ');
-  const num2 = await pedirNumero('Ingrese el segundo número: ');
+    const num1 = await pedirNumero('Ingrese el primer número'); 
+    const num2 = await pedirNumero('Ingrese el segundo número');
 
-  const resultado = operacion(num1, num2);
+    let resultado;
+    try {
+        resultado = operacion(num1, num2);
+    } catch (error) {
+        console.log(`\n⚠️  Error: ${error.message}`);
+        return;
+    }
 
-  if (resultado === undefined) {
-    console.log(`\n⚠️  La función ${nombreOperacion} aún no está implementada`);
-  } else {
-    console.log(`\n✓ Resultado: ${num1} ${getSimboloOperacion(nombreOperacion)} ${num2} = ${resultado}`);
-  }
+    if (resultado === undefined) {
+        console.log(`\n⚠️  La función ${nombreOperacion} aún no está implementada`);
+    } else {
+        calc.guardarEnMemoria(resultado); 
+        console.log(`\n✓ Resultado: ${num1} ${getSimboloOperacion(nombreOperacion)} ${num2} = ${resultado} (Guardado en Memoria)`);
+    }
 }
 
 async function operacionUnNumero(operacion, nombreOperacion) {
-  const num = await pedirNumero('Ingrese el número: ');
+    const num = await pedirNumero('Ingrese el número'); 
 
-  const resultado = operacion(num);
+    const resultado = operacion(num);
 
-  if (resultado === undefined) {
-    console.log(`\n⚠️  La función ${nombreOperacion} aún no está implementada`);
-  } else if (isNaN(resultado)) {
-    console.log(`\n⚠️  Error: Operación inválida (resultado: NaN)`);
-  } else {
-    console.log(`\n✓ Resultado: √${num} = ${resultado}`);
-  }
+    if (resultado === undefined) {
+        console.log(`\n⚠️  La función ${nombreOperacion} aún no está implementada`);
+    } else if (isNaN(resultado)) {
+        console.log(`\n⚠️  Error: Operación inválida (resultado: NaN)`);
+    } else {
+        calc.guardarEnMemoria(resultado); 
+        console.log(`\n✓ Resultado: √${num} = ${resultado} (Guardado en Memoria)`);
+    }
 }
 
 function getSimboloOperacion(nombre) {

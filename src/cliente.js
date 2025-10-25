@@ -21,6 +21,7 @@ function mostrarMenu() {
   console.log('7. Factorial');
   console.log('8. Calcular Máximo');
   console.log('9. Calcular Logaritmo');
+  console.log('10. Resto de la división');
   console.log('0. Salir');
   console.log('=================================');
 }
@@ -84,7 +85,8 @@ function getSimboloOperacion(nombre) {
     'multiplicación': '×',
     'división': '÷',
     'potencia': '^',
-    'logaritmo': 'log'
+    'logaritmo': 'log',
+    'resto': '%'
   };
   return simbolos[nombre] || '';
 }
@@ -169,6 +171,13 @@ async function ejecutarOpcion(opcion) {
       } else {
         console.log(`\n✓ Resultado: log_${baseLog}(${numeroLog}) = ${resultadoLog}`);
       }
+      break;
+
+    case '10':
+      const dividendo = await pedirNumero('Ingrese el dividendo: ');
+      const divisor = await pedirNumero('Ingrese el divisor: ');
+      const resultadoResto = calc.resto(dividendo, divisor);
+      console.log(`\n✓ Resultado: El resto de ${dividendo} dividido por ${divisor} es ${resultadoResto}`);
       break;
 
     case '0':

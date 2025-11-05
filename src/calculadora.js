@@ -40,15 +40,35 @@ class Calculadora {
   raizCuadrada(numero) {
     return Math.sqrt(numero);
   }
-
-  porcentaje(a, b) {
-    if (b === 0) {
-      throw new Error("No se puede calcular el porcentaje si el total (b) es cero");
+  factorial(numero) {
+    var result = numero;
+    if (numero === 0 || numero === 1)
+      return 1;
+    while (numero > 1) {
+      numero--;
+      result *= numero;
     }
-    return (a / b) * 100;
+    return result;
   }
 
+  calcularMaximo(numeros) {
+    if (!Array.isArray(numeros) || numeros.length === 0) {
+      throw new Error("Debe proporcionar un array no vacío de números");
+    }
+    return Math.max(...numeros);
+  }
+
+  calcularLogaritmo(numero, base) {
+    if (numero <= 0 || base <= 1) {
+      throw new Error("Número debe ser mayor que 0 y base debe ser mayor que 1");
+    }
+    return Math.log(numero) / Math.log(base);
+  }
+  resto(dividendo, divisor) {
+    return dividendo - this.multiplicar(Math.floor(dividendo / divisor), divisor);
+  }
 }
+
 
 // Exportar para usar en tests
 if (typeof module !== 'undefined' && module.exports) {

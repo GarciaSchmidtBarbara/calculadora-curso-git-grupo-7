@@ -18,8 +18,10 @@ function mostrarMenu() {
   console.log('4. Dividir');
   console.log('5. Potencia');
   console.log('6. Raíz Cuadrada');
-  console.log('7. Porcentaje (a sobre b)');
-  console.log(`[M] Memoria actual: ${calc.obtenerMemoria()}`);
+  console.log('7. Factorial');
+  console.log('8. Calcular Máximo');
+  console.log('9. Calcular Logaritmo');
+  console.log('10. Resto de la división');
   console.log('0. Salir');
   console.log('=================================');
 }
@@ -37,6 +39,22 @@ function pedirNumero(mensaje) {
             resolve(numero);
         });
     });
+}
+
+async function cargarNumeros() {
+  const numeros = [];
+  let continuar = true;
+
+  while (continuar) {
+    const num = await pedirNumero('Ingrese un número (o ingrese -1 para terminar): ');
+    if (num === -1) {
+      continuar = false;
+    } else {
+      numeros.push(num);
+    }
+  }
+
+  return numeros;
 }
 
 async function operacionDosNumeros(operacion, nombreOperacion) {
@@ -81,7 +99,8 @@ function getSimboloOperacion(nombre) {
     'multiplicación': '×',
     'división': '÷',
     'potencia': '^',
-    'porcentaje': '%'
+    'logaritmo': 'log',
+    'resto': '%'
   };
   return simbolos[nombre] || '';
 }
@@ -138,6 +157,42 @@ async function ejecutarOpcion(opcion) {
         'raíz cuadrada'
       );
       break;
+    case '7':
+      await operacionUnNumero(
+        (num) => calc.factorial(num),
+        'factorial'
+      );
+      break;
+
+    case '8':
+      const numeros = await cargarNumeros();
+      if (numeros.length === 0) {
+        console.log('\n  Debe ingresar al menos un número');
+        break;
+      }
+      const maximo = calc.calcularMaximo(numeros);
+      console.log(`\n✓ El máximo de los números ${numeros.join(', ')} es: ${maximo}`);
+
+      break;
+
+    case '9':
+      const numeroLog = await pedirNumero('Ingrese el número: ');
+      const baseLog = 10; // Logaritmo en base 10
+      const resultadoLog = calc.calcularLogaritmo(numeroLog, baseLog);
+
+      if (resultadoLog === undefined) {
+        console.log('\n⚠️  La función logaritmo aún no está implementada');
+      } else {
+        console.log(`\n✓ Resultado: log_${baseLog}(${numeroLog}) = ${resultadoLog}`);
+      }
+      break;
+
+    case '10':
+      const dividendo = await pedirNumero('Ingrese el dividendo: ');
+      const divisor = await pedirNumero('Ingrese el divisor: ');
+      const resultadoResto = calc.resto(dividendo, divisor);
+      console.log(`\n✓ Resultado: El resto de ${dividendo} dividido por ${divisor} es ${resultadoResto}`);
+      break;
 
       case '7':
       try {
@@ -156,7 +211,7 @@ async function ejecutarOpcion(opcion) {
       return false;
 
     default:
-      console.log('\n⚠️  Opción inválida. Por favor intente nuevamente.');
+      console.log('\n  Opción inválida. Por favor intente nuevamente.');
   }
 
   return true;

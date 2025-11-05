@@ -18,18 +18,12 @@ function mostrarMenu() {
   console.log('4. Dividir');
   console.log('5. Potencia');
   console.log('6. Raíz Cuadrada');
-<<<<<<< HEAD
   console.log('7. Factorial');
   console.log('8. Calcular Máximo');
   console.log('9. Calcular Logaritmo');
   console.log('10. Resto de la división');
-=======
-  console.log('7. Porcentaje (a sobre b)');
-<<<<<<< HEAD
->>>>>>> 580066d (Agregada funcion porcentaje y modificado cliente.js para que funcione)
-=======
+  console.log('11. Porcentaje (a sobre b)');
   console.log(`[M] Memoria actual: ${calc.obtenerMemoria()}`);
->>>>>>> b55b643 (Funcion memoria añadida)
   console.log('0. Salir');
   console.log('=================================');
 }
@@ -47,7 +41,6 @@ function pedirNumero(mensaje) {
             resolve(numero);
         });
     });
-<<<<<<< HEAD
 }
 
 async function cargarNumeros() {
@@ -64,43 +57,33 @@ async function cargarNumeros() {
   }
 
   return numeros;
-=======
->>>>>>> b55b643 (Funcion memoria añadida)
 }
 
 async function operacionDosNumeros(operacion, nombreOperacion) {
-    const num1 = await pedirNumero('Ingrese el primer número'); 
-    const num2 = await pedirNumero('Ingrese el segundo número');
+  const num1 = await pedirNumero('Ingrese el primer número: ');
+  const num2 = await pedirNumero('Ingrese el segundo número: ');
 
-    let resultado;
-    try {
-        resultado = operacion(num1, num2);
-    } catch (error) {
-        console.log(`\n⚠️  Error: ${error.message}`);
-        return;
-    }
+  const resultado = operacion(num1, num2);
 
-    if (resultado === undefined) {
-        console.log(`\n⚠️  La función ${nombreOperacion} aún no está implementada`);
-    } else {
-        calc.guardarEnMemoria(resultado); 
-        console.log(`\n✓ Resultado: ${num1} ${getSimboloOperacion(nombreOperacion)} ${num2} = ${resultado} (Guardado en Memoria)`);
-    }
+  if (resultado === undefined) {
+    console.log(`\n⚠️  La función ${nombreOperacion} aún no está implementada`);
+  } else {
+    console.log(`\n✓ Resultado: ${num1} ${getSimboloOperacion(nombreOperacion)} ${num2} = ${resultado}`);
+  }
 }
 
 async function operacionUnNumero(operacion, nombreOperacion) {
-    const num = await pedirNumero('Ingrese el número'); 
+  const num = await pedirNumero('Ingrese el número: ');
 
-    const resultado = operacion(num);
+  const resultado = operacion(num);
 
-    if (resultado === undefined) {
-        console.log(`\n⚠️  La función ${nombreOperacion} aún no está implementada`);
-    } else if (isNaN(resultado)) {
-        console.log(`\n⚠️  Error: Operación inválida (resultado: NaN)`);
-    } else {
-        calc.guardarEnMemoria(resultado); 
-        console.log(`\n✓ Resultado: √${num} = ${resultado} (Guardado en Memoria)`);
-    }
+  if (resultado === undefined) {
+    console.log(`\n⚠️  La función ${nombreOperacion} aún no está implementada`);
+  } else if (isNaN(resultado)) {
+    console.log(`\n⚠️  Error: Operación inválida (resultado: NaN)`);
+  } else {
+    console.log(`\n✓ Resultado: √${num} = ${resultado}`);
+  }
 }
 
 function getSimboloOperacion(nombre) {
@@ -110,12 +93,9 @@ function getSimboloOperacion(nombre) {
     'multiplicación': '×',
     'división': '÷',
     'potencia': '^',
-<<<<<<< HEAD
     'logaritmo': 'log',
-    'resto': '%'
-=======
+    'resto': 'MOD',
     'porcentaje': '%'
->>>>>>> 580066d (Agregada funcion porcentaje y modificado cliente.js para que funcione)
   };
   return simbolos[nombre] || '';
 }
@@ -209,18 +189,7 @@ async function ejecutarOpcion(opcion) {
       console.log(`\n✓ Resultado: El resto de ${dividendo} dividido por ${divisor} es ${resultadoResto}`);
       break;
 
-      case '7':
-      try {
-        await operacionDosNumeros(
-          (a, b) => calc.porcentaje(a, b),
-          'porcentaje'
-        );
-      } catch (error) {
-        console.log(`\n⚠️  Error: ${error.message}`);
-      }
-      break;
-
-      case '7':
+      case '11':
       try {
         await operacionDosNumeros(
           (a, b) => calc.porcentaje(a, b),
